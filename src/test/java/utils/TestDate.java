@@ -10,4 +10,5 @@ public String
     username = faker.name().firstName(),
     userPassword = faker.name().lastName();
 
+
 }

@@ -21,7 +21,11 @@ public class LogInPage {
             historyOfSpendings = $x("//main//div[@id='spendings']"),
             avatarPerson = $x("//*[@data-testid='PersonIcon']"),
             userNameInputOnProfile = $x("//div//input[@value]"),
-            textWithTheAuthorizationError = $x("//div[2]//p[@class='form__error']");
+            textWithTheAuthorizationError = $x("//div[2]//p[@class='form__error']"),
+            nameInputOnProfile = $x("//input[@id='name']"),
+            valueNameOnProfile = $x("//div[2]//input[@value]"),
+            saveChanges = $x("//button[@id=':r5:']");
+
 
     public LogInPage userLogIn(String value) {
         userName.setValue(value);
@@ -53,8 +57,28 @@ public class LogInPage {
         return this;
     }
 
-    public void checkUserNameOnProfile(String value) {
+    public LogInPage setNameInputInProfile(String value) {
+        nameInputOnProfile.setValue(value);
+        return this;
+    }
+
+    public LogInPage checkNameInputInProfile(String value) {
+        nameInputOnProfile.shouldBe(text(value));
+        return this;
+    }
+    public LogInPage checkValueInInputName(String value) {
+        valueNameOnProfile.shouldBe(value(value));
+        return this;
+    }
+
+    public LogInPage buttonSaveChanges() {
+        saveChanges.click();
+        return this;
+    }
+
+    public LogInPage checkUserNameOnProfile(String value) {
         userNameInputOnProfile.shouldHave(value(value));
+        return this;
     }
 
     public void checkErrorText(String value) {
